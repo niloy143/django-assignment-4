@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block content %}
+
+<form method="POST">
+	{% csrf_token %} {% load crispy_forms_tags %} {{ form | crispy }}
+	<button class="btn btn-primary">Submit</button>
+</form>
+
+<div class="pt-5">
+	<h4>Category List</h4>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for category in categories %}
+			<tr>
+				<th scope="row">{{ category.id }}</th>
+				<td>{{ category.name }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+{% endblock content %}
